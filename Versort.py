@@ -456,7 +456,7 @@ while True:
                 found_viruses.append(virus)
                 todelete.append(virus_path)
         if len(found_viruses) == 5:
-            console.print("\nYou have eliminated all the viruses! YOU'VE WON WOHOOOOOO! °\(^▿^)/° \n", style="purple bold")
+            console.print("\nYou have eliminated all the viruses! YOU'VE WON WOHOOOOOO! (^▿^) \n", style="purple bold")
             console.print("don't mine me I'll just clean up...", style="italic blue")
             time.sleep(0.75)
             delete_file(todelete)
@@ -470,4 +470,5 @@ while True:
             continue
         else:
             console.print("\nNo viruses found... Better luck next time.. (⌣̩̩́_⌣̩̩̀)\n", style="bold red")
+
             continue
