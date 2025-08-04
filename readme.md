@@ -21,9 +21,10 @@ A Python-based file organizer with sorting, batch operations, and a fun mini-gam
 
 1. **Requirements**:
    - Python 3.8+
-   - Required packages: `rich`, `shutil`
+   - Required packages: `rich`
 
 2. **Install dependencies**:
    - pip install rich
+
 
  **Made with love, passion and a lot of sleep deprivation!**
