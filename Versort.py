@@ -7,7 +7,7 @@ import random
 import time
 from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeElapsedColumn
 console = Console()
-console.print("Welcome to Versort! \nVersatile, Fast and fun!", style="bold green")
+console.print("\nWelcome to Versort! \nVersatile, Fast and fun!", style="bold green")
 def get_file_info(sortdir):
     files_info = []
     for root, dirs, files in os.walk(sortdir):
@@ -81,8 +81,10 @@ def delete_file(targets):
     for msg in fail_msgs:
         console.print(msg, style="red")
 while True:
-    console.print("Please type a directory (or type 'exit' to quit)", style="bold blue")
-    sortdir = input()
+    console.print("Please type a directory (or type 'exit' to quit)", style="bold blue underline")
+    time.sleep(0.5)
+    console.print("Non-existing directories sometimes cause unexpected errors. You just need to restart! :D", style="italic dodger_blue2")
+    sortdir = input(":")
     if sortdir.lower() == "exit":
         console.print("Thank you for using Versort! ☺\n", style="bold green")
         console.print("  ⣠⣤⣶⣶⣦⣄⡀  ⠀⢀⣤⣴⣶⣶⣤  ", style="bold red")
@@ -106,7 +108,7 @@ while True:
     console.print("What do you want to do? ", style="bold green underline")
     console.print("\n 1- Manage all files \n 2- First letter sorting \n 3- File type sorting \n 4- File size sorting \n 5- Locate a file \n 6- Gather duplicates \n \n Type 'exit' to quit.\n ", style ="green")
     console.print(" Type 'G' for a surprise...", style="italic purple")
-    choice = input(": ")
+    choice = input(":")
     if choice.lower() == "exit":
         console.print("Thank you for using Versort! ☺\n", style="bold green")
         console.print(" ⠀⣠⣤⣶⣶⣦⣄⡀  ⠀⢀⣤⣴⣶⣶⣤   ", style="bold red")
@@ -126,13 +128,13 @@ while True:
             targets.append(info['path'])
         console.print("\n1- Move files \n2- Copy files \n3- Delete files", style="bold green")
         console.print("\nType 'n' to go back", style="italic red")
-        input1 = input(": ").lower()
+        input1 = input(":").lower()
         if input1 == "n":
             continue
         elif input1 == "1":
             console.print("Please select the target directory to move the file(s) to", style="bold green")
             console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
-            targetpath = input(": ")
+            targetpath = input(":")
             if not os.path.exists(targetpath):
                 console.print("Target Directory does not exist. Try again.", style="green")
                 continue
@@ -140,7 +142,7 @@ while True:
         elif input1 == "2":
             console.print("Please select the target directory to copy the file(s) to", style="bold green")
             console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
-            targetpath = input(": ")
+            targetpath = input(":")
             if not os.path.exists(targetpath):
                 console.print("Target Directory does not exit. Try again.", style="green")
                 continue
@@ -150,7 +152,7 @@ while True:
     elif choice == "2":
         console.print("Enter the first letter to sort by.", style="bold green")
         console.print("\nType 'n' to go back.", style="italic red")
-        first_letter = input(": ")
+        first_letter = input(":")
         if first_letter.lower() == "n":
             continue
         targets = []
@@ -165,11 +167,11 @@ while True:
         random1 = 0
         while random1 < 1:
             console.print("1- Move files \n2- Copy files \n3- Delete files\n", style="bold green")
-            xx = input(": ")
+            xx = input(":")
             if xx == "1":
                 console.print("Please select the target directory to move the files to.", style="bold green")
                 console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
-                targetpath = input(": ")
+                targetpath = input(":")
                 if not os.path.exists(targetpath):
                     console.print("Target Directory does not exist. Try again.", style="green")
                     continue
@@ -178,7 +180,7 @@ while True:
             elif xx == "2":
                 console.print("Please select the target directory to copy the files to.", style="bold green")
                 console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
-                targetpath = input(": ")
+                targetpath = input(":")
                 if not os.path.exists(targetpath):
                     console.print("Target Directory does not exist. Try again", style="green")
                     continue
@@ -192,7 +194,7 @@ while True:
     elif choice == "3":
         console.print("Enter the file type to sort by (.txt, .jpg, etc.) \n", style="bold green")
         console.print("\nType 'n' to go back", style="italic red")
-        file_type = input()
+        file_type = input(":")
         if file_type.lower() == "n":
             continue
         targets = []
@@ -207,11 +209,11 @@ while True:
         random2 = 0
         while random2 < 1:
             console.print("1- Move files \n2- Copy files \n3- Delete files", style="bold green")
-            xx = input(": ")
+            xx = input(":")
             if xx == "1":
                 console.print("Please select the target direcory to move the files to.", style="bold green")
                 console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
-                targetpath = input(": ")
+                targetpath = input(":")
                 if not os.path.exists(targetpath):
                     console.print("Target Directory does not exist. Try again.", style="green")
                     continue
@@ -220,7 +222,7 @@ while True:
             elif xx == "2":
                 console.print("Please select the target directory to copy the files to.", style="bold green")
                 console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
-                targetpath = input(": ")
+                targetpath = input(":")
                 if not os.path.exists(targetpath):
                     console.print("Target Directory does not exist. Try again.", style="green")
                     continue
@@ -235,7 +237,7 @@ while True:
         print("\n")
         console.print("1. Greater than limit. \n2. Less than limit\n", style="green")
         console.print("\nType 'n' to go back.", style="italic red")
-        xxx = input(": ")
+        xxx = input(":")
         if xxx.lower() == 'n':
             continue
         console.print("Enter the file size limit in Megabytes: ", style="green")
@@ -262,11 +264,11 @@ while True:
         random = 0
         while random < 1:
             console.print("1- Move files \n2- Copy files \n3- Delete files", style="bold green")
-            xx = input(": ")
+            xx = input(":")
             if xx == "1":
                 console.print("Please select the target directory to move the files to.", style="bold green")
                 console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
-                targetpath = input(": ")
+                targetpath = input(":")
                 if not os.path.exists(targetpath):
                     console.print("Target Directory does not exist. Try again.", style="green")
                     continue
@@ -275,7 +277,7 @@ while True:
             elif xx == "2":
                 console.print("Please select the target directory to copy the files to.", style="bold green")
                 console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
-                targetpath = input(": ")
+                targetpath = input(":")
                 if not os.path.exists(targetpath):
                     console.print("Target Directory does not exist. Try again", style="green")
                     continue
@@ -289,7 +291,7 @@ while True:
     elif choice == "5":
         console.print("Enter the name of the file to locate as shown in the list.", style="bold yellow")
         console.print("\nType 'n' to go back", style="italic red")
-        file_name = input(": ")
+        file_name = input(":")
         if file_name.lower() == "n":
             continue
         found = False
@@ -307,7 +309,7 @@ while True:
             if choice1 == "1":
                 console.print("Please select the target directory to move the file(s) to.", style="bold green")
                 console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
-                targetpath = input(": ")
+                targetpath = input(":")
                 if not os.path.exists(targetpath):
                     console.print("Target Directory does not exist. Try again.", style="green")
                     continue
@@ -315,7 +317,7 @@ while True:
             elif choice1 == "2":
                 console.print("Please select the target directory to copy the file(s) to")
                 console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
-                targetpath = input(": ")
+                targetpath = input(":")
                 if not os.path.exists(targetpath):
                     console.print("Target Directory does not exist. Try again.", style="green")
                     continue
@@ -360,7 +362,7 @@ while True:
                                  console.print("Please select the target directory to move or copy files to.", style="bold green")
                                  console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
                                  console.print("Type 'n' to skip.", style="italic red")
-                                 targetpath = input(": ")
+                                 targetpath = input(":")
                                  if targetpath.lower() == "n":
                                      continue
                                  if not os.path.exists(targetpath):
@@ -372,7 +374,7 @@ while True:
                                  console.print("Please select the target directory to move or copy files to.", style="bold green")
                                  console.print("Note: One of the duplicate file pair get deleted once moved or copied to the same directory.",style="red italic")
                                  console.print("Type 'n' to skip.", style="italic red")
-                                 targetpath = input(": ")
+                                 targetpath = input(":")
                                  if targetpath.lower() == "n":
                                      continue
                                  if not os.path.exists(targetpath):
@@ -383,7 +385,7 @@ while True:
                              elif answer == "3":
                                  console.print("Warning! This will delete all duplicates and their originals permanently!", style="bold red")
                                  console.print("Do you wish to proceed? (y/n)", style="bold green")
-                                 choice2 = input(": ").lower()
+                                 choice2 = input(":").lower()
                                  if choice2 == "y":
                                      delete_file(targets)
                                      random3 += 1
@@ -397,10 +399,10 @@ while True:
         console.print("Would you like to play in the current directory?", style="green bold")
         console.print("Y/N", style="yellow bold")
         console.print("Type 'x' to go back", style="red italic")
-        choice3 = input(": ")
+        choice3 = input(":")
         if choice3.lower() == "n":
             console.print("Please type a directory (or type 'exit' to quit)")
-            choice4 = input(": ").lower()
+            choice4 = input(":").lower()
             if choice4 == "exit":
                 continue
             if not os.path.exists(choice4):
@@ -453,11 +455,11 @@ while True:
         console.print("you could open Versort in another tab and use the file finder....", style="italic blue")
         time.sleep(0.4)
         console.print("Type 'help' for a hint :P or 'n' to continue")
-        choice5 = input(": ").lower()
+        choice5 = input(":").lower()
         if choice5 == "help":
             console.print(f"This might help...{hint}", style="purple italic")
         console.print("Type 'done' to verify the files when you're done or 'exit' to go back", style="bold green")
-        choice6 = input(": ").lower()
+        choice6 = input(":").lower()
         if choice6 == "exit":
             continue
         found_viruses = []
